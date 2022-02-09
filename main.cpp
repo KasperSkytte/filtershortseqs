@@ -84,23 +84,23 @@ int main(int argc, char* argv[])
     auto outputPath = argv[2];
 
     auto start = chrono::high_resolution_clock::now();
-    cout << "Reading input file..." << endl;
+    cout << "Reading input file...";
     auto records = ReadFromFastaFile(inputPath);
-    cout << "done" << endl;
+    cout << " done" << endl;
     auto initialRecordNum = records.size();
     auto startPos = records.begin();
     SORTED_RECORDS = GetChunk(records,0, (long) initialRecordNum);
 
-    cout << "Sorting records by sequence length for searching faster..." << endl;
+    cout << "Sorting records by sequence length...";
     sort(SORTED_RECORDS.begin(), SORTED_RECORDS.end(), sortBySequenceLength);
-    cout << "done" << endl;
+    cout << " done" << endl;
 
-    cout << "Creating sequence length index..." << endl;
+    cout << "Creating sequence length index...";
     SEARCH_INDEX = CreateSequenceLengthSearchIndex(SORTED_RECORDS);
-    cout << "done" << endl;
+    cout << " done" << endl;
 
 
-    cout << "Dereplicating..." << endl;
+    cout << "Dereplicating...";
     //TODO multithreading?
     for(auto &seqIndexItem: SEARCH_INDEX) {
         set<string> foundSequences = {};
@@ -117,15 +117,15 @@ int main(int argc, char* argv[])
             }
         }
     }
-    cout << "done" << endl;
+    cout << " done" << endl;
 
     cout << "Original record count: " << initialRecordNum << endl;
     auto filtered = filterRecords(records, SORTED_RECORDS);
     cout << endl << "Final record count: "<< filtered.size() << endl;
 
-    cout << "Writing output file" << endl;
+    cout << "Writing output file...";
     WriteToFastaFile(outputPath, filtered);
-    cout << "done" << endl;
+    cout << " done" << endl;
 
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::seconds>(stop - start);
