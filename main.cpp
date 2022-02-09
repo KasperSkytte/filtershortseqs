@@ -264,7 +264,6 @@ void WriteToFastaFile(string path, vector<fastaEntry*>& records){
     if(outputFile.is_open()){
         for(auto & record : records) {
             outputFile << record->header << endl;
-            //outputFile << ">FLASV" << i+1 << '.' << records[i].sequenceLength << endl; // Custom header
             outputFile << record->sequence << endl;
         }
     }
