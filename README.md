@@ -1,5 +1,5 @@
 # Filter short sequences
-filterShortSeqs is a small program written in C++ which filters DNA sequences from an input FASTA file if there are any other 100% identical, but longer sequences present in the FASTA file. The sequences are dereplicated initially. Multithreaded using OpenMP.
+filterShortSeqs is a small program written in C++ which filters DNA sequences from an input FASTA file if there are any other 100% identical, but longer sequences present in the FASTA file. The sequences are dereplicated initially, and the relative order of the sequences in the input file are preserved in the output file. Multithreaded using OpenMP.
 
 ## Requirements
  - `cmake`
