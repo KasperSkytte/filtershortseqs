@@ -11,3 +11,9 @@ test/
 build/
 
 *.cmake
+
+CMakeCache.txt
+
+filterShortSeqs
+
+Makefile
