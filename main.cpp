@@ -153,7 +153,7 @@ int CheckArgumentCount(int argc){
         result =  EXIT_FAILURE;
     }
     if(result > 0){
-        std::cerr << "usage: filterShortSeqs <input_file> <output_file> <threads>";
+        std::cerr << "usage: filterShortSeqs <input_file> <output_file> <threads>" << endl;
     }
     return result;
 }
