@@ -128,9 +128,9 @@ int main(int argc, char* argv[])
     cout << " done" << endl;
 
     auto stop = chrono::high_resolution_clock::now();
-    auto duration_h = chrono::duration_cast<chrono::hours>(stop - start).count();
-    auto duration_m = chrono::duration_cast<chrono::minutes>(stop - start).count();
-    auto duration_s = chrono::duration_cast<chrono::seconds>(stop - start).count();
+    auto duration_h = chrono::duration_cast<chrono::hours>(stop - start).count()%60;
+    auto duration_m = chrono::duration_cast<chrono::minutes>(stop - start).count()%60;
+    auto duration_s = chrono::duration_cast<chrono::seconds>(stop - start).count()%60;
     cout << "Process took ";
     cout << duration_h;
     cout << "h:";
