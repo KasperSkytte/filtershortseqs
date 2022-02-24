@@ -1,75 +1,21 @@
-# Find longest sequences
-A simple tool written in c++ for use in [AutoTax](https://github.com/kasperskytte/autotax), it dereplicates and filters sequences in an input fasta file. Sequences are removed if longer sequences are found which are 100% identical, relative order of sequences is maintained.
+# Filter short sequences
+filterShortSeqs is a small program written in C++ which filters DNA sequences from an input FASTA file if there are any other 100% identical, but longer sequences present in the FASTA file. The sequences are dereplicated initially, and the relative order of the sequences in the input file are preserved in the output file. Multithreaded using OpenMP. 
 
-## Compilation:
-```bash
-cmake .
-make
+Credit to [Nick Green](https://github.com/nickgreensgithub) for creating it for use in [AutoTax](https://github.com/kasperskytte/autotax).
+
+## Requirements
+ - `cmake`
+ - `make`
+ - A C++ compiler
+ - probably others...
+
+## Compilation
+Run `cmake CMakeLists.txt` and then `make`. Compiles into a single binary `filterShortSeqs` in the current folder.
+
+## Usage
 ```
-## Usage: 
-```bash
-findLongSeqs <input_file> <output_file> <threads>
-```
-## Dependencies:
-- OpenMP
-
-## Example usage
-input_file.fa
-```bash
->one
-GAT
->two
-EGACA
->three
-GAAB
->four
-GAAT
->five
-GAATA
->six
-GATACR
->seven
-EGATA
->eight
-EGATA
->nine
-GAACA
->ten
-EGATA
-```
-
-Running with 1 thread:
-```bash
-./findLongSeqs ./input_file.fa ./output_file.fa 1
-
-Reading input file...
-done
-Sorting sequences by length for faster searching...
-done
-Creating sequence length index...
-done
-Dereplicating sequences...
-done
-Original sequence count: 10
-{         █          █          █          █    █} 100%
-Final sequence count: 6
-Writing output file
-done
-Process took: 0 seconds to complete
-```
-
-output_file.fa
-```bash
->two
-EGACA
->three
-GAAB
->five
-GAATA
->six
-GATACR
->seven
-EGATA
->nine
-GAACA
+$ ./filterShortSeqs 
+missing input file
+missing output file
+usage: filterShortSeqs <input_file> <output_file> <threads>
 ```

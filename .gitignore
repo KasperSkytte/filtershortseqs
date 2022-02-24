@@ -4,3 +4,16 @@ cmake-build-debug/
 *.fa
 
 .idea/
+
+CMakeFiles/
+
+test/
+build/
+
+*.cmake
+
+CMakeCache.txt
+
+filterShortSeqs
+
+Makefile
